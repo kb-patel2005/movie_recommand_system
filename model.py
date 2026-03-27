@@ -19,7 +19,7 @@ def recommend(movie):
     try:
         movie_index = movies[movies['title'] == movie].index[0]
     except IndexError:
-        return [f"Movie '{movie}' not found in dataset"]
+        return []
 
     distances = similarity[movie_index]
 
@@ -28,8 +28,14 @@ def recommend(movie):
                         key=lambda x: x[1])[1:6]
 
     recommended = []
+
     for i in movie_list:
-        recommended.append(movies.iloc[i[0]].title)
+        movie_data = movies.iloc[i[0]]   # ✅ define here
+
+        recommended.append({
+            "title": movie_data['title'],       # ✅ use dict style (safer)
+            "overview": movie_data['overview']
+        })
 
     return recommended
 

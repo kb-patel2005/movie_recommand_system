@@ -1,78 +1,98 @@
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f9;
-    margin: 0;
-    padding: 0;
-}
-
+/* Container */
 .container {
-    width: 60%;
-    margin: 50px auto;
-    background: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
 }
 
+/* Title */
 .title {
     text-align: center;
-    color: #333;
-}
-
-.form-box {
-    text-align: center;
+    font-size: 2rem;
     margin-bottom: 20px;
 }
 
-.dropdown {
-    padding: 8px;
-    margin-right: 10px;
+/* Form */
+.form-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
+/* Dropdown */
+.dropdown {
+    padding: 10px;
+    font-size: 1rem;
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Button */
 .btn {
-    padding: 8px 15px;
-    background: #007BFF;
+    padding: 10px;
+    background: black;
     color: white;
-    border: none;
-    border-radius: 4px;
+    border-radius: 50px;
+    font-size: 1rem;
     cursor: pointer;
 }
 
-.btn:hover {
-    background: #0056b3;
-}
-
+/* Results */
 .results {
     margin-top: 20px;
 }
 
+/* Recommendation list */
 .recommend-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
     list-style: none;
     padding: 0;
 }
 
-.recommend-item {
-    background: #e9ecef;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 4px;
-}
-
-.error-box {
-    background: #fff;
-    padding: 30px;
-    margin-top: 30px;
-    border-radius: 12px;
+/* .recommend-item {
+    background: gainsboro;
+    padding: 15px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: bisque;
+    border-radius: 8px;
+} */
+
+.recommend-item {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 8px;
 }
 
-.error-box h2 {
-    font-size: 48px;
-    color: red;
+.recommend-item h3 {
+    margin-bottom: 8px;
+    font-size: 1.1rem;
 }
 
-.error-box p {
-    font-size: 18px;
-    margin: 10px 0;
+.overview {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+/* 🔥 Mobile Responsive */
+@media (max-width: 768px) {
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .recommend-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .recommend-list {
+        grid-template-columns: 1fr;
+    }
+
+    .btn {
+        width: 100%;
+    }
 }

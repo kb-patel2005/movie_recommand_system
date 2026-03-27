@@ -1,35 +1,56 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Movie Recommendation System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
 
-<div class="container">
-    <h1 class="title">🎬 Movie Recommendation System</h1>
+    <div class="container">
+        <h1 class="title">🎬 Movie Recommendation System</h1>
 
-    <form action="/recommend" method="post" class="form-box">
-        <label for="movie">Choose a movie:</label>
-        <select name="movie" id="movie" class="dropdown">
-            {% for movie in movie_list %}
-            <option value="{{movie}}">{{movie}}</option>
-            {% endfor %}
-        </select>
-        <button type="submit" class="btn">Recommend</button>
-    </form>
+        <form action="/recommend" method="post" class="form-box">
+            <h2><label for="movie">Choose a movie:</label></h2>
+            <select name="movie" id="movie" class="dropdown">
+                {% for movie in movie_list %}
+                <option value="{{movie}}" {% if selected_movie==movie %}selected{% endif %}>
+                    {{movie}}
+                </option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn">Recommend</button>
+        </form>
 
-    {% if recommendations %}
-    <div class="results">
-        <h2>✨ Recommended Movies</h2>
-        <ul class="recommend-list">
-            {% for movie in recommendations %}
-            <li class="recommend-item">{{movie}}</li>
-            {% endfor %}
-        </ul>
+        {% if recommendations %}
+        <!-- <div class="results">
+            <hr/>
+            <h2>✨ Recommended Movies</h2>
+            <ul class="recommend-list">
+                {% for movie in recommendations %}
+                <li class="recommend-item">{{movie}}</li>
+                {% endfor %}
+            </ul>
+        </div> -->
+        <!-- {% if recommendations %} -->
+        <div class="results">
+            <h2>✨ Recommended Movies</h2>
+
+            <div class="recommend-list">
+                {% for movie in recommendations %}
+                <div class="recommend-item">
+                    <h3>{{ movie.title }}</h3>
+                    <p class="overview">{{ movie.overview }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        {% endif %}
     </div>
-    {% endif %}
-</div>
 
 </body>
+
 </html>
